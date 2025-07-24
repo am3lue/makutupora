@@ -3,87 +3,6 @@
   --yellow: #fcd116;
   --blue: #00a3dd;
   --black: #000000;
-
-  --bg-light: #f8f9fa;
-  --bg-dark: #121212;
-  --text-light: #222;
-  --text-dark: #f1f1f1;
-}
-
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: var(--bg-light);
-  color: var(--text-light);
-  transition: all 0.3s ease;
-}
-
-body.dark {
-  background-color: var(--bg-dark);
-  color: var(--text-dark);
-}
-
-header {
-  background: linear-gradient(90deg, var(--green), var(--yellow), var(--blue));
-  padding: 15px;
-  text-align: center;
-  color: white;
-  font-size: 1.5em;
-  font-weight: bold;
-}
-
-#themeToggle {
-  margin-top: 10px;
-  padding: 8px 15px;
-  background: var(--black);
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.container {
-  padding: 15px;
-  max-width: 100%;
-}
-
-input[type="file"],
-input[type="text"] {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  font-size: 1em;
-  border: 2px solid var(--yellow);
-  border-radius: 8px;
-  outline: none;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.9em;
-}
-
-th, td {
-  text-align: left;
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
-}
-
-tbody tr:nth-child(even) {
-  background-color: var(--blue);
-  color: white;
-}
-
-tbody tr:nth-child(odd) {
-  background-color: var(--green);
-  color: white;
-}
-
-tbody tr:hover {
-  background-color: var(--yellow);
-  color: black;
-  cursor: pointer;
 }
 
 .modal {
@@ -92,7 +11,7 @@ tbody tr:hover {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.6);
+  background-color: rgba(0, 0, 0, 0.6);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -101,37 +20,4 @@ tbody tr:hover {
 
 .hidden {
   display: none;
-}
-
-.modal-content {
-  background: white;
-  padding: 20px;
-  width: 90%;
-  max-width: 350px;
-  border-radius: 10px;
-  text-align: center;
-  border: 3px solid var(--yellow);
-}
-
-body.dark .modal-content {
-  background: #222;
-  color: var(--text-dark);
-}
-
-#closeModal {
-  float: right;
-  font-size: 1.5em;
-  cursor: pointer;
-  color: red;
-}
-
-footer {
-  background: var(--black);
-  color: white;
-  text-align: center;
-  padding: 10px;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  font-size: 0.9em;
 }
