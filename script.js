@@ -11,7 +11,7 @@ function debounce(func, wait) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  Papa.parse('recruits_demo.csv', {
+  Papa.parse('demo2.csv', {
     download: true,
     header: true,
     skipEmptyLines: true,
