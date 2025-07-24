@@ -4,38 +4,37 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Army Recruit Finder</title>
+  <script src="https://unpkg.com/papaparse@latest/papaparse.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="style.css">
-  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 </head>
-<body>
-  <header>
-    <h1>Army Recruit Finder</h1>
-    <button id="themeToggle">Toggle Theme</button>
+<body class="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+  <header class="bg-gradient-to-r from-green-600 via-yellow-500 to-blue-600 text-white text-center py-6">
+    <h1 class="text-3xl font-bold tracking-tight">Army Recruit Finder</h1>
+    <button id="themeToggle" class="mt-3 px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-700 transition">Toggle Theme</button>
   </header>
-
-  <main class="container">
-    <input type="file" id="upload" accept=".csv">
-    <input type="text" id="search" placeholder="Search by name, company, section, or platoon...">
-    <table id="output">
-      <thead></thead>
-      <tbody></tbody>
-    </table>
-  </main>
-
+  <div class="container mx-auto px-4 py-6">
+    <input type="file" id="upload" accept=".csv" class="w-full p-3 mb-4 border-2 border-yellow-500 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100">
+    <input type="text" id="search" placeholder="Search recruits..." class="w-full p-3 mb-4 border-2 border-yellow-500 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:outline-none">
+    <div class="overflow-x-auto rounded-lg shadow">
+      <table id="output" class="w-full border-collapse text-sm">
+        <thead></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
   <div id="cardModal" class="modal hidden">
-    <div class="modal-content">
-      <span id="closeModal">&times;</span>
-      <h2 id="cardName"></h2>
+    <div class="modal-content bg-white dark:bg-gray-800 p-6 rounded-lg max-w-sm w-full border-4 border-yellow-500">
+      <span id="closeModal" class="float-right text-2xl cursor-pointer text-red-500">×</span>
+      <h2 id="cardName" class="text-xl font-bold mb-4"></h2>
       <p><strong>Company:</strong> <span id="cardCompany"></span></p>
       <p><strong>Section:</strong> <span id="cardSection"></span></p>
       <p><strong>Platoon:</strong> <span id="cardPlatoon"></span></p>
     </div>
   </div>
-
-  <footer>
-    <p>Site made by Danger Company, Makutupora</p>
+  <footer class="bg-gray-800 text-white text-center py-4 fixed bottom-0 w-full">
+    Site made by Danger Company, Makutupora
   </footer>
-
   <script src="script.js"></script>
 </body>
 </html>
