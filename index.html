@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Army Recruits Viewer</title>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    th { background: #f2f2f2; }
+  </style>
+</head>
+<body>
+
+<h2>Army Recruit List</h2>
+<p>Upload a CSV file with the following headers: <b>Name, Company, Section, Platoon</b></p>
+<input type="file" id="upload" accept=".csv" />
+
+<table id="output">
+  <thead></thead>
+  <tbody></tbody>
+</table>
+
+<script>
+document.getElementById('upload').addEventListener('change', function(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+
+  Papa.parse(file, {
+    header: true,
+    skipEmptyLines: true,
+    complete: function(results) {
+      const data = results.data;
+      const headers = Object.keys(data[0]);
+      const thead = document.querySelector('#output thead');
+      const tbody = document.querySelector('#output tbody');
+
+      thead.innerHTML = '<tr>' + headers.map(h => `<th>${h}</th>`).join('') + '</tr>';
+      tbody.innerHTML = data.map(row => 
+        '<tr>' + headers.map(h => `<td>${row[h]}</td>`).join('') + '</tr>'
+      ).join('');
+    }
+  });
+});
+</script>
+
+</body>
+</html>
