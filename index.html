@@ -1,22 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Army Recruit Finder</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Army Recruit Finder</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 </head>
 <body>
-    <div class="container">
-        <h1>Army Recruit Finder</h1>
-        <input type="file" id="upload" accept=".csv">
-        <input type="text" id="search" placeholder="Search by name, company, section, or platoon...">
-        <table id="output">
-            <thead></thead>
-            <tbody></tbody>
-        </table>
+  <header>
+    <h1>Army Recruit Finder</h1>
+    <button id="themeToggle">Toggle Theme</button>
+  </header>
+
+  <main class="container">
+    <input type="file" id="upload" accept=".csv">
+    <input type="text" id="search" placeholder="Search by name, company, section, or platoon...">
+    <table id="output">
+      <thead></thead>
+      <tbody></tbody>
+    </table>
+  </main>
+
+  <div id="cardModal" class="modal hidden">
+    <div class="modal-content">
+      <span id="closeModal">&times;</span>
+      <h2 id="cardName"></h2>
+      <p><strong>Company:</strong> <span id="cardCompany"></span></p>
+      <p><strong>Section:</strong> <span id="cardSection"></span></p>
+      <p><strong>Platoon:</strong> <span id="cardPlatoon"></span></p>
     </div>
-    <script src="script.js"></script>
+  </div>
+
+  <footer>
+    <p>Site made by Danger Company, Makutupora</p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
