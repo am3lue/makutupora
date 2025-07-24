@@ -1,4 +1,4 @@
-let recruitsData = []; // Store parsed data globally
+let recruitsData = [];
 
 document.getElementById('upload').addEventListener('change', function (e) {
     const file = e.target.files[0];
@@ -36,7 +36,31 @@ function displayTable(data) {
 
     const headers = Object.keys(data[0]);
     tableHead.innerHTML = '<tr>' + headers.map(h => `<th>${h}</th>`).join('') + '</tr>';
-    tableBody.innerHTML = data.map(row =>
-        '<tr>' + headers.map(h => `<td>${row[h]}</td>`).join('') + '</tr>'
+    tableBody.innerHTML = data.map((row, index) =>
+        `<tr data-index="${index}">` + headers.map(h => `<td>${row[h]}</td>`).join('') + '</tr>'
     ).join('');
+
+    // Add click event to each row
+    document.querySelectorAll('#output tbody tr').forEach(tr => {
+        tr.addEventListener('click', function () {
+            const i = this.getAttribute('data-index');
+            showCard(recruitsData[i]);
+        });
+    });
 }
+
+function showCard(recruit) {
+    document.getElementById('cardName').textContent = recruit.Name;
+    document.getElementById('cardCompany').textContent = recruit.Company;
+    document.getElementById('cardSection').textContent = recruit.Section;
+    document.getElementById('cardPlatoon').textContent = recruit.Platoon;
+    document.getElementById('cardModal').classList.remove('hidden');
+}
+
+document.getElementById('closeModal').addEventListener('click', () => {
+    document.getElementById('cardModal').classList.add('hidden');
+});
+
+document.getElementById('themeToggle').addEventListener('click', () => {
+    document.body.classList.toggle('dark');
+});
