@@ -61,6 +61,12 @@
     </thead>
     <tbody></tbody>
   </table>
+  
+  <section id="reportSection">
+    <h2>Attendance Report</h2>
+    <div id="reportContent"></div>
+    <button onclick="printReport()">Print Report</button>
+  </section>
 
   <script>
     let allPeople = [];
@@ -118,6 +124,34 @@
       statusCell.textContent = isPresent ? "Present" : "Absent";
       row.classList.remove("present", "absent");
       row.classList.add(isPresent ? "present" : "absent");
+    }
+    function generateReport() {
+      let total = Object.keys(attendanceStatus).length;
+      let present = Object.values(attendanceStatus).filter(s => s === "Present").length;
+      let absent = total - present;
+
+      let content = `
+        <p><strong>Total People Marked:</strong> ${total}</p>
+        <p><strong>Present:</strong> ${present}</p>
+        <p><strong>Absent:</strong> ${absent}</p>
+        <h3>Detailed List:</h3>
+        <ul>
+          ${Object.entries(attendanceStatus).map(([name, status]) => `<li>${name}: ${status}</li>`).join("")}
+        </ul>
+      `;
+
+      document.getElementById("reportContent").innerHTML = content;
+      document.getElementById("reportSection").style.display = "block";
+    }
+
+    function printReport() {
+      let reportContent = document.getElementById("reportSection").innerHTML;
+      let win = window.open('', '', 'height=600,width=800');
+      win.document.write('<html><head><title>Attendance Report</title></head><body>');
+      win.document.write(reportContent);
+      win.document.write('</body></html>');
+      win.document.close();
+      win.print();
     }
   </script>
 </body>
