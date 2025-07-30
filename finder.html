@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Finder – Tanzania Jeshi</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background-color: #0b1c14;
+      color: #f0f0f0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #a3ffb3;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      width: 80%;
+      max-width: 400px;
+      border-radius: 5px;
+      border: none;
+      font-size: 1em;
+      margin-bottom: 20px;
+    }
+
+    .result-card {
+      background-color: #1f5731;
+      padding: 15px;
+      border-radius: 10px;
+      margin: 10px auto;
+      max-width: 400px;
+      box-shadow: 0 0 8px #0a0;
+      text-align: left;
+    }
+
+    .result-card p {
+      margin: 5px 0;
+      font-size: 1em;
+    }
+
+    #notFound {
+      color: #ffbaba;
+      font-size: 1em;
+    }
+  </style>
+</head>
+<body>
+  <h1>Jeshi Finder</h1>
+  <p>Enter a name to search for a soldier:</p>
+  <input type="text" id="searchInput" placeholder="e.g. Blue Francis" onkeyup="searchPerson()" />
+
+  <div id="results"></div>
+
+  <script>
+    const people = [
+      { Name: "Blue Francis", Company: "Danger", Platoon: 1, Section: 2 },
+      { Name: "Alice Smith", Company: "Alpha", Platoon: 3, Section: 1 },
+      { Name: "John Doe", Company: "Bravo", Platoon: 2, Section: 2 },
+      { Name: "Mary Johnson", Company: "Chali", Platoon: 1, Section: 3 },
+      // You can add or load more entries here...
+    ];
+
+    function searchPerson() {
+      const query = document.getElementById("searchInput").value.toLowerCase().trim();
+      const resultContainer = document.getElementById("results");
+      resultContainer.innerHTML = "";
+
+      if (query === "") return;
+
+      const matches = people.filter(person => person.Name.toLowerCase().includes(query));
+
+      if (matches.length === 0) {
+        resultContainer.innerHTML = `<p id="notFound">No matching person found.</p>`;
+        return;
+      }
+
+      matches.forEach(person => {
+        const card = `
+          <div class="result-card">
+            <p><strong>Name:</strong> ${person.Name}</p>
+            <p><strong>Company:</strong> ${person.Company}</p>
+            <p><strong>Platoon:</strong> ${person.Platoon}</p>
+            <p><strong>Section:</strong> ${person.Section}</p>
+          </div>
+        `;
+        resultContainer.innerHTML += card;
+      });
+    }
+  </script>
+</body>
+</html>

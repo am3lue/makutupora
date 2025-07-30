@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Welcome to Tanzania Jeshi</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #0b1c14;
+      color: #f0f0f0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2em;
+      margin-bottom: 0.5em;
+      color: #a3ffb3;
+    }
+
+    p {
+      font-size: 1.1em;
+      margin-bottom: 2em;
+      color: #c0c0c0;
+    }
+
+    .btn {
+      background-color: #1f5731;
+      color: #fff;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1em;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      margin: 10px;
+      width: 200px;
+      box-shadow: 0 0 8px #0a0;
+    }
+
+    .btn:hover {
+      background-color: #2f8648;
+      transform: scale(1.05);
+    }
+
+    .button-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 10px;
+      font-size: 0.8em;
+      color: #666;
+    }
+
+    @media(min-width: 600px) {
+      .button-group {
+        flex-direction: row;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome to Tanzania Jeshi</h1>
+  <p>Makutupora Roll Call System<br>Select your action below:</p>
+
+  <div class="button-group">
+    <button class="btn" onclick="location.href='rollcall.html'">Roll Call</button>
+    <button class="btn" onclick="location.href='finder.html'">Finder</button>
+  </div>
+
+  <footer>© 2025 Makutupora Jeshi System</footer>
+</body>
+</html>
