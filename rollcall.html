@@ -77,7 +77,7 @@
     let allPeople = [];
     let attendanceStatus = {};
 
-    fetch("demo.csv")
+    fetch("demo2.csv")
       .then(response => response.text())
       .then(csvText => {
         const parsed = Papa.parse(csvText, { header: true });
@@ -134,23 +134,33 @@
     }
 
     function generateReport() {
-      let total = Object.keys(attendanceStatus).length;
-      let present = Object.values(attendanceStatus).filter(s => s === "Present").length;
-      let absent = total - present;
+  let total = Object.keys(attendanceStatus).length;
+  let present = Object.values(attendanceStatus).filter(s => s === "Present").length;
+  let absent = total - present;
 
-      let content = `
-        <p><strong>Total People Marked:</strong> ${total}</p>
-        <p><strong>Present:</strong> ${present}</p>
-        <p><strong>Absent:</strong> ${absent}</p>
-        <h3>Detailed List:</h3>
-        <ul>
-          ${Object.entries(attendanceStatus).map(([name, status]) => `<li>${name}: ${status}</li>`).join("")}
-        </ul>
-      `;
+  // Separate absent and present names
+  let absentList = Object.entries(attendanceStatus)
+    .filter(([_, status]) => status !== "Present")
+    .map(([name]) => `<li>${name}</li>`).join("");
 
-      document.getElementById("reportContent").innerHTML = content;
-      document.getElementById("reportSection").style.display = "block";
-    }
+  let presentList = Object.entries(attendanceStatus)
+    .filter(([_, status]) => status === "Present")
+    .map(([name]) => `<li>${name}</li>`).join("");
+
+  let content = `
+    <p><strong>Total People Marked:</strong> ${total}</p>
+    <p><strong>Present:</strong> ${present}</p>
+    <p><strong>Absent:</strong> ${absent}</p>
+    <h3>Detailed List:</h3>
+    <h4>Absent</h4>
+    <ul>${absentList}</ul><br><br>
+    <h4>Present</h4>
+    <ul>${presentList}</ul>
+  `;
+
+  document.getElementById("reportContent").innerHTML = content;
+  document.getElementById("reportSection").style.display = "block";
+}
 
     function printReport() {
       let reportContent = document.getElementById("reportSection").innerHTML;
